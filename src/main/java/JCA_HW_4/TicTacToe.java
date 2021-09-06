@@ -124,7 +124,7 @@ public class TicTacToe {
             for(int y=0;y<fieldSizeY;y++)
             {
                 if (field[x][y]==dot)  winHor++;
-                else continue;
+                else if (field[x][y]!=dot) winHor=0; break;
 
             }
         }
@@ -133,19 +133,20 @@ public class TicTacToe {
             for (int x=0;x<fieldSizeX;x++)
             {
                if(field[x][y]==dot) winVer++;
-               else continue;
+               else if(field[x][y]!=dot) winVer=0;break;
 
             }
         //diagonale
         for (int i=0;i<field.length;i++)
         {
             if(field[i][i]==dot) winDiag++;
-            else continue;
+            else if (field[i][i]!=dot) winDiag=0; break;
         }
         for (int i=0;i<field.length;i++)
         {
             if(field[i][n-i-1]==dot) revDiag++;
-            else continue;
+            else if (field[i][n-i-1]!=dot) revDiag=0; break;
+
         }
         if (winHor == numberWin || winVer == numberWin || winDiag == numberWin || revDiag==numberWin) {
             return true;
