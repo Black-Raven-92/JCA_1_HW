@@ -17,6 +17,7 @@ public class TicTacToe {
     private static int scoreAI;
     private static int roundCounter = 1;
     public static int numberWin=4;
+    public static  int len=4;
 
     public static void main(String[] args) {
         play();
@@ -112,49 +113,32 @@ public class TicTacToe {
     private static boolean isCellEmpty(int y, int x) {
         return field[y][x] == DOT_EMPTY;
     }
-    private static boolean checkWin(char dot) {
-        int n=field.length;
-//hor
-        int winHor=0;
-        int winVer=0;
-        int winDiag=0;
-        int revDiag=0;
-        for(int x=0;x<fieldSizeX;x++)
-        {
-            for(int y=0;y<fieldSizeY;y++)
-            {
-                if (field[x][y]==dot)  winHor++;
-                else if (field[x][y]!=dot) winHor=0; break;
-
+    private static boolean checkWin(char dot, int length) {
+        for (int y = 0; y < fieldSizeY; y++) {            // проверяем всё поле
+            for (int x = 0; x < fieldSizeX; x++) {
+                if (checkLine(x, y, 1, 0, length, dot)) return true;    // проверка  по +х
+                if (checkLine(x, y, 1, 1, length, dot)) return true;    // проверка по диагонали +х +у
+                if (checkLine(x, y, 0, 1, length, dot)) return true;    // проверка линию по +у
+                if (checkLine(x, y, 1, -1, length, dot)) return true;    // проверка по диагонали +х -у
+//                if (checkLine(i, j, -1, 0, length, dot)) return true;	// проверка  по +х
+//                if (checkLine(i, j, -1, 1, length, dot)) return true;	// проверка по диагонали +х +у
+//                if (checkLine(i, j, 0, -1, length, dot)) return true;	// проверка линию по +у
+//                if (checkLine(i, j, -1, -1, length, dot)) return true;	// проверка по диагонали +х -у
             }
         }
-        //ver
-        for (int y=0;y<fieldSizeY;y++)
-            for (int x=0;x<fieldSizeX;x++)
-            {
-               if(field[x][y]==dot) winVer++;
-               else if(field[x][y]!=dot) winVer=0;break;
+        return false;
+    }
 
-            }
-        //diagonale
-        for (int i=0;i<field.length;i++)
-        {
-            if(field[i][i]==dot) winDiag++;
-            else if (field[i][i]!=dot) winDiag=0; break;
+
+
+    private static boolean checkLine(int x, int y, int incrementX, int incrementY, int len, char dot) {
+        int endXLine = x + (len - 1) * incrementX;            // конец линии по Х
+        int endYLine = y + (len - 1) * incrementY;            // конец по У
+        if (!isCellValid(endYLine, endXLine)) return false;    // Выход линии за пределы
+        for (int i = 0; i < len; i++) {                    // идем по линии
+            if (field[y + i * incrementY][x + i * incrementX] != dot) return false;    // символы одинаковые?
         }
-        for (int i=0;i<field.length;i++)
-        {
-            if(field[i][n-i-1]==dot) revDiag++;
-            else if (field[i][n-i-1]!=dot) revDiag=0; break;
-
-        }
-        if (winHor == numberWin || winVer == numberWin || winDiag == numberWin || revDiag==numberWin) {
-            return true;
-        } else {
-            return false;
-        }
-
-
+        return true;
     }
 
     private static boolean checkDraw(){
@@ -169,7 +153,7 @@ public class TicTacToe {
 
     private static boolean checkGame(char dot) {
         if (checkDraw()) return true;
-        if (checkWin(dot)) {
+        if (checkWin(dot,len)) {
             if (dot == DOT_USER) {
                 System.out.println("Вы выиграли!!!");
                 scoreHuman++;
