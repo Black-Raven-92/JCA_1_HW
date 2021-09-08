@@ -114,16 +114,13 @@ public class TicTacToe {
         return field[y][x] == DOT_EMPTY;
     }
     private static boolean checkWin(char dot, int length) {
-        for (int y = 0; y < fieldSizeY; y++) {            // проверяем всё поле
+        for (int y = 0; y < fieldSizeY; y++) {
             for (int x = 0; x < fieldSizeX; x++) {
-                if (checkLine(x, y, 1, 0, length, dot)) return true;    // проверка  по +х
-                if (checkLine(x, y, 1, 1, length, dot)) return true;    // проверка по диагонали +х +у
-                if (checkLine(x, y, 0, 1, length, dot)) return true;    // проверка линию по +у
-                if (checkLine(x, y, 1, -1, length, dot)) return true;    // проверка по диагонали +х -у
-//                if (checkLine(i, j, -1, 0, length, dot)) return true;	// проверка  по +х
-//                if (checkLine(i, j, -1, 1, length, dot)) return true;	// проверка по диагонали +х +у
-//                if (checkLine(i, j, 0, -1, length, dot)) return true;	// проверка линию по +у
-//                if (checkLine(i, j, -1, -1, length, dot)) return true;	// проверка по диагонали +х -у
+                if (checkLine(x, y, 1, 0, length, dot)) return true;
+                if (checkLine(x, y, 1, 1, length, dot)) return true;
+                if (checkLine(x, y, 0, 1, length, dot)) return true;
+                if (checkLine(x, y, 1, -1, length, dot)) return true;
+
             }
         }
         return false;
@@ -132,11 +129,11 @@ public class TicTacToe {
 
 
     private static boolean checkLine(int x, int y, int incrementX, int incrementY, int len, char dot) {
-        int endXLine = x + (len - 1) * incrementX;            // конец линии по Х
-        int endYLine = y + (len - 1) * incrementY;            // конец по У
-        if (!isCellValid(endYLine, endXLine)) return false;    // Выход линии за пределы
-        for (int i = 0; i < len; i++) {                    // идем по линии
-            if (field[y + i * incrementY][x + i * incrementX] != dot) return false;    // символы одинаковые?
+        int endXLine = x + (len - 1) * incrementX;
+        int endYLine = y + (len - 1) * incrementY;
+        if (!isCellValid(endYLine, endXLine)) return false;
+        for (int i = 0; i < len; i++) {
+            if (field[y + i * incrementY][x + i * incrementX] != dot) return false;
         }
         return true;
     }
