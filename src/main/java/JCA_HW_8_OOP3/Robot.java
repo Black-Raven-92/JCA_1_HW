@@ -1,12 +1,12 @@
 package JCA_HW_8_OOP3;
 
-public class Man implements Mooving {
-    private final int JUMP = 50;
-    private final int RUN = 20;
+public class Robot implements Mooving {
+    private final int JUMP = 100;
+    private final int RUN = 150;
     private String name;
     private String type;
 
-    public Man(String type, String name) {
+    public Robot(String type, String name) {
         this.name = name;
         this.type = type;
     }
@@ -16,13 +16,13 @@ public class Man implements Mooving {
         for(int i=0;i< barriers.length;i++){
             if(barriers[i] instanceof Wall){
                 if (!jump(barriers[i])) {
-                    System.out.printf("Человек по имени %s не перепрыгнул  стену и выбывает из марафона\n",this.name);
+                    System.out.printf("Робот по имени %s не перепрыгнул  стену и выбывает из марафона\n",this.name);
                     break;
                 }
 
             }else if(barriers[i] instanceof Track){
                 if(!run(barriers[i])){
-                    System.out.printf("Человек по имени %s не пробежал трэк и выбывает из марафона\n",this.name);
+                    System.out.printf("Робот по имени %s не пробежал трэк и выбывает из марафона\n",this.name);
                     break;
                 }
             }
@@ -33,7 +33,7 @@ public class Man implements Mooving {
     public boolean run(Barrier barriers) {
 
         if (this.RUN >= ((Track) barriers).getLengthTrack()) {
-            System.out.printf("Человек пробежал трэк %s метров\n", ((Track) barriers).getLengthTrack());
+            System.out.printf("Робот по имени%s пробежал трэк %s метров\n",this.name, ((Track) barriers).getLengthTrack());
             return true;
         }
         else return false;
@@ -43,7 +43,7 @@ public class Man implements Mooving {
     public boolean jump(Barrier barriers) {
 
         if (this.JUMP >= ((Wall) barriers).getHeight()) {
-            System.out.printf("Человек перепрыгнул стену %s метров\n", ((Wall) barriers).getHeight());
+            System.out.printf("Роот по имени %s перепрыгнул стену %s метров\n",this.name, ((Wall) barriers).getHeight());
             return true;
         }
         else return false;
