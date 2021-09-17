@@ -10,9 +10,9 @@ public class HomeWork_OOP8
         Track track2=new Track(10,"Track");
         Barrier [] barriers = {wall1,wall2,track1,track2};
 
-        for(int i=0;i<3;i++)
+        for(int i=0;i< barriers.length;i++)
         {
-            man.move(barriers);
+            man.move(new Barrier[]{barriers[i]});
         }
 
 

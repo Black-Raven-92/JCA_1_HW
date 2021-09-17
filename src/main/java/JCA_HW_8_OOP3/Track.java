@@ -5,7 +5,7 @@ public class Track extends Barrier {
 
     public Track(int length,String type){
         super(type);
-        this.lengthTrack=getLengthTrack();
+        this.lengthTrack=length;
     }
 
     public int getLengthTrack() {
