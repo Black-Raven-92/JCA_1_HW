@@ -11,7 +11,7 @@ public class Cat extends Animal {
         index++;
     }
 
-    public void run(int distance) {
+    protected void run(int distance) {
         if (distance<= MAX_DISTANCE) {
             System.out.printf("%s %s по имени %s пробежал %d метров\n", color, type, name, distance);
         } else
@@ -23,10 +23,10 @@ public class Cat extends Animal {
         System.out.printf("Коты не умеют плавать и не проплывут %s метров\n",distance);
     }
 
-    public static int catValue(){
+    protected static int catValue(){
         return index;
     }
-    public void eat(Bowl bowl){
+    protected void eat(Bowl bowl){
         if(bowl.foodAmount>=this.appetite){
             bowl.decreaseFood(this.appetite);
             this.fullness=true;
@@ -34,7 +34,7 @@ public class Cat extends Animal {
         }
         else System.out.printf("%s по имени %s не хватило еды\n",this.type, this.name);
     }
-    public void checkFullness(){
+    protected void checkFullness(){
         if (this.fullness==true) System.out.printf("%s %s по имени %s покушал и доволен\n",this.color, this.type,this.name);
         else System.out.printf("%s %s по имени %s не хвтило еды\n",this.color, this.type,this.name);
     }

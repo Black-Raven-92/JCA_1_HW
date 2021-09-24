@@ -1,8 +1,8 @@
 package JCA_HW_8_OOP3;
 
 public class Man implements Mooving {
-    private final int JUMP = 50;
-    private final int RUN = 20;
+    private final int JUMP = 60;
+    private final int RUN = 60;
     private String name;
     private String type;
 

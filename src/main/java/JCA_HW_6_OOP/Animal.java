@@ -21,12 +21,12 @@ public abstract class Animal {
         index++;
 
     }
-    public  abstract void run(int distance);
-    public abstract void eat(Bowl bowl);
-    public static int animalValue(){
+    protected abstract void run(int distance);
+    protected abstract void eat(Bowl bowl);
+    protected static int animalValue(){
         return index;
     }
-    public abstract void checkFullness();
+    protected abstract void checkFullness();
 
 
 }

@@ -33,7 +33,7 @@ public class Robot implements Mooving {
     public boolean run(Barrier barriers) {
 
         if (this.RUN >= ((Track) barriers).getLengthTrack()) {
-            System.out.printf("Робот по имени%s пробежал трэк %s метров\n",this.name, ((Track) barriers).getLengthTrack());
+            System.out.printf("Робот по имени %s пробежал трэк %s метров\n",this.name, ((Track) barriers).getLengthTrack());
             return true;
         }
         else return false;
@@ -43,7 +43,7 @@ public class Robot implements Mooving {
     public boolean jump(Barrier barriers) {
 
         if (this.JUMP >= ((Wall) barriers).getHeight()) {
-            System.out.printf("Роот по имени %s перепрыгнул стену %s метров\n",this.name, ((Wall) barriers).getHeight());
+            System.out.printf("Робот по имени %s перепрыгнул стену %s метров\n",this.name, ((Wall) barriers).getHeight());
             return true;
         }
         else return false;

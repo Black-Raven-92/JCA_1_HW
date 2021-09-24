@@ -13,25 +13,25 @@ public class Dog extends Animal {
     }
 
     @Override
-    public void run(int distance) {
+    protected void run(int distance) {
         if (distance <= MAX_DISTANCE_RUN) {
             System.out.printf("%s %s по имени %s пробежал %d метров!!!\n", color, type, name, distance);
         } else
             System.out.printf("%s %s по имени %s может пробежать только %d метров!!!\n", color, type, name, MAX_DISTANCE_RUN);
     }
 
-    public void swimming(int distance) {
+    protected void swimming(int distance) {
         if (distance <= MAX_DISTANCE_SWIM)
             System.out.printf("%s %s по имени %s проплыл %s\n", color, type, name, distance);
         else
             System.out.printf("%s %s по имени %s может проплыть только %s метров\n", color, type, name, MAX_DISTANCE_SWIM);
     }
 
-    public static int dogValue() {
+    protected static int dogValue() {
         return index;
     }
 
-    public void eat(Bowl bowl) {
+    protected void eat(Bowl bowl) {
         if (bowl.foodAmount >= this.appetite) {
             bowl.decreaseFood(this.appetite);
             this.fullness = true;
@@ -39,7 +39,7 @@ public class Dog extends Animal {
         } else System.out.printf("%s по имени %s не хватило еды\n", this.type, this.name);
 
     }
-    public void checkFullness(){
+    protected void checkFullness(){
         if (this.fullness==true) System.out.printf("%s %s по имени %s покушал и доволен\n",this.color, this.type,this.name);
         else System.out.printf("%s %s по имени %s не хвтило еды\n",this.color, this.type,this.name);
     }
