@@ -1,10 +1,10 @@
 package JCA_HW_1;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class HomeWork {
     public static void main (String[] args){
-
         int a=10;
         byte b=1;
         short c=20;

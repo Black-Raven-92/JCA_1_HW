@@ -5,14 +5,14 @@ public class Bowl {
     public Bowl(int foodAmount){
         this.foodAmount=foodAmount;
     }
-    public void decreaseFood(int amount)
+    protected void decreaseFood(int amount)
     {
         this.foodAmount-=amount;
     }
-    public int getFoodAmount(){
+    protected int getFoodAmount(){
         return foodAmount;
     }
-    public void addFood(int amount){
+    protected void addFood(int amount){
         this.foodAmount+=amount;
     }
 }
