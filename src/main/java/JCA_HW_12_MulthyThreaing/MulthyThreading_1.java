@@ -55,7 +55,7 @@ public class MulthyThreading_1 {
         System.arraycopy(arr1,0,arr,0,HALF);
         System.arraycopy(arr2,0,arr,HALF,HALF);
 
-        System.out.println("Время исполнения двумя потоками: "+(System.currentTimeMillis()-a)/1000+" секунды");
+        System.out.println("Время исполнения двумя потоками: "+(System.currentTimeMillis()-a)/1000+" секунд");
     }
 
 }
